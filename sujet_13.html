@@ -86,9 +86,73 @@
 
 <script type="text/javascript">
 
-    // YOUR CODE HERE
-    // ...
-    
+    // 1.Générer un tableau de n nombres entiers aléatoires (par exemple n=25) entre 2 bornes (par exemple 0 et 200) en utilisant la fonction "randomArrayOfIntFromInterval" mise à votre disposition dans le fichier tools.js. 
+    // Afficher dans la console le tableau ainsi généré afin de faciliter le contrôle de bonne exécution.
+
+    let tab = randomArrayOfIntFromInterval(randomIntFromInterval(1,10),0,200);
+    // génération tableau avec entrées aléatoires entre 1-10 + nombre aléatoire entre 0-200
+    console.log(tab) ;
+
+
+    // 2.Construire un nouveau tableau en y rangeant les nombres du premier tableau dans l'ordre inverse.
+
+    let tabReverse = tab.reverse() ;
+    console.log(tabReverse);
+
+    // 3.Supprimer de ce tableau inversé les nombres divisibles par 3.
+    // faire une boucle for each, avec %3 et si true => push le nombre dans un autre tableau ?
+    //autre hypothèse : 
+
+    let tabBin = [];
+    let tabReverseThree= [];
+    let i = 0
+    tabReverse.forEach((indice)=>{
+        if ((indice%3) == 0){
+            tabBin.push(tabReverse[i]);
+            i++;
+        }
+        else{
+            tabReverseThree.push(tabReverse[i]);
+            i++;
+        }
+    })
+
+    console.log(`tableau poubelle : ${tabBin}`);
+    console.log(`tableau reverse sans les /3 : ${tabReverseThree}`);
+    // le tableau poubelle n'est pas demandé atm, mais si on a besoin des valeurs plus tard elles seront deja stocké ?
+
+    // 4.Restituer le tableau résultat à l'utilisateur par le moyen de votre choix (console, zone de résultat, ...), mais la fonction "displayArray" donnée dans tools.js devra être privilégiée.
+
+    // displayArray(tabReverseThree);
+
+
+    /* ================================================================================= */
+
+    function reverseAndFilter() {
+        let number = document.getElementById("number-item").value;
+        let min = document.getElementById("borne-min").value;
+        let max = document.getElementById("borne-max").value;
+
+        let tab2 = randomArrayOfIntFromInterval(number, min, max);
+
+        let tab2Reverse = tab2.reverse();
+        let tab2Bin = [];
+        let tab2ReverseThree = [];
+        let j = 0;
+
+        tab2Reverse.forEach((indice)=>{
+            if ((indice%3) == 0){
+                tab2Bin.push(tab2Reverse[j]);
+                j++;
+            }else{
+                tab2ReverseThree.push(tab2Reverse[j]);
+                j++;
+            }
+        })
+
+        displayArray(tab2ReverseThree);
+    }
+
 </script>
 
 </body>
